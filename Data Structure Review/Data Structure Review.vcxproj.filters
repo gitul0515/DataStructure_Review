@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="4_1 Stack.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="4_2 Dynamic Stack.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="4_3 괄호 검사.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="4_4 후위 표기 계산.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="4_5 후위 표기 변환.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="5_1 Linear queue.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="5_2 Circular Queue.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="5_3 난수생성함수.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="5_4 버퍼.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="연습장.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="5_5 Deque.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="6_1 ArrayList.C">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="6_2 Linked list.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="6_3 Linked list 심화1.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="6_4 Linked list 심화2.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="6_5 Linked list 심화3.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="6_6 Linked list 심화4.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="7_1 Circular Linked List.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
