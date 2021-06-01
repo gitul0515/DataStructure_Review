@@ -42,9 +42,6 @@
     <ClCompile Include="5_4 버퍼.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="연습장.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="5_5 Deque.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -67,6 +64,18 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="7_1 Circular Linked List.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="7_2 Double linked list.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="시간 관련 함수1.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="시간 관련 함수2.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="연습장.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
