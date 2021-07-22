@@ -75,8 +75,28 @@
     <ClCompile Include="시간 관련 함수2.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="시간 관련 함수3.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="6_7 Linked list 심화5.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="7_3 Linked Stack.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="연습장.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="12_1 선택 정렬.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="12_2 삽입 정렬.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore">
+      <Filter>소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-//단순 연결리스트 프로그램 
+//후위 삽입 함수, 특정한 값을 삭제하는 함수 추가
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -36,16 +36,20 @@ ListNode* insert(ListNode* head, ListNode* pre, element value)
 //후위 삽입 함수 
 ListNode* insert_last(ListNode* head, element data)
 {
-	//첫 노드일 경우 
+	ListNode* p;
+	ListNode* new_node = (ListNode*)malloc(sizeof(ListNode));
+	new_node->data = data;
 	if (head == NULL)
-		return insert_first(head, data);
-
-	ListNode* new = (ListNode*)malloc(sizeof(ListNode));
-	ListNode* pre;
-	new->data = data;
-	for (pre = head; pre->link != NULL; pre = pre->link);
-	new->link = pre->link;
-	pre->link = new;
+	{
+		new_node->link = head;
+		head = new_node;
+	}
+	else
+	{
+		for (p = head; p->link != NULL; p = p->link);
+		new_node->link = p->link;
+		p->link = new_node;
+	}
 	return head;
 }
 //전위 삭제 함수 
@@ -68,21 +72,6 @@ ListNode* delete(ListNode* head, ListNode* pre)
 	free(removed);
 	return head;
 }
-//후위 삭제 함수 
-ListNode* delete_last(ListNode* head)
-{
-	if (head == NULL)
-		return NULL;
-	else if (head->link == NULL)        //첫 노드일 경우
-		return delete_first(head);
-
-	ListNode* rm, * pre;
-	for (pre = head; (pre->link)->link != NULL; pre = pre->link);
-	rm = pre->link;
-	pre->link = rm->link;
-	free(rm);
-	return head;
-}
 //출력 함수 
 void print_list(ListNode* head)
 {
@@ -90,20 +79,51 @@ void print_list(ListNode* head)
 		printf("%d->", p->data);
 	printf("NULL \n");
 }
+//특정한 값을 삭제하는 함수 
+ListNode* delete_node(ListNode* head, element data)
+{
+	ListNode* p, * pre;
+	if (head == NULL)              //공백 상태
+		return NULL;
+	p = head;
+	do
+	{
+		if (head->data == data)    //첫 노드를 삭제
+		{
+			ListNode* rm = head;
+			head = rm->link;
+			free(rm);
+			p = head;
+		}
+		else if (p->data == data)  //첫 이외의 노드를 삭제
+		{
+			ListNode* rm = p;
+			pre->link = rm->link;
+			p = rm->link;
+			free(rm);
+		}
+		else
+		{
+			pre = p;
+			p = p->link;
+		}
+	} while (p != NULL);
+	return head;
+}
+
 
 int main()
 {
 	ListNode* head = NULL;
+	head = insert_first(head, 2);
+	head = insert_first(head, 3);
+	head = insert_first(head, 2);
+	head = insert_first(head, 2);
+	head = insert_first(head, 1);
+	print_list(head);
 
-	for (int i = 0; i < 5; i++)
-	{
-		head = insert_first(head, i);
-		print_list(head);
-	}
-	for (int i = 0; i < 5; i++)
-	{
-		head = delete_first(head);
-		print_list(head);
-	}
-	return 0; 
+	head = delete_node(head, 2);
+	print_list(head);
+
+	return 0;
 }
