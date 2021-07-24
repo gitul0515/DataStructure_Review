@@ -96,6 +96,12 @@
     <ClCompile Include="12_3 Bubble_sort.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="12_4 Shell_sort.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="12_5 Merge_sort.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore">
