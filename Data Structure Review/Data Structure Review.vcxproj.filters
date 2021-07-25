@@ -102,6 +102,9 @@
     <ClCompile Include="12_5 Merge_sort.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="12_6 Quick_sort.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore">
