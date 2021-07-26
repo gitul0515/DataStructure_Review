@@ -50,7 +50,7 @@ void merge(int* list, int left, int mid, int right)
 	//분할 정렬된 list의 합병
 	while (i <= mid && j <= right)
 	{
-		if (list[i] < list[j])
+		if (list[i] <= list[j])
 			sorted[k++] = list[i++];
 		else
 			sorted[k++] = list[j++];
