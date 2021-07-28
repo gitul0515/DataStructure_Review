@@ -1,34 +1,27 @@
-//버블 정렬 프로그램
+//qsort 함수 라이브러리의 사용
 #include<stdio.h>
 #include<stdlib.h>
-#include<time.h>
-#define MAX_SIZE 10
-#define SWAP(X,Y,T) ((T)=(X),(X)=(Y),(Y)=(T))
+#define MAX_SIZE 5
 
-void bubble_sort(int* list, int num)
+int compare(void* arg1, void* arg2)
 {
-	int i, j, temp;
-	for (i = num - 1; i > 0; i--)
-	{
-		for (j = 0; j < i; j++)
-			if (list[j] > list[j + 1]) 
-				SWAP(list[j], list[j + 1], temp);
-	}
+	if (*(double*)arg1 > *(double*)arg2)
+		return 1;
+	else if (*(double*)arg1 == *(double*)arg2)
+		return 0;
+	else
+		return -1;
 }
 
 int main()
 {
 	int i;
-	int num = MAX_SIZE;
-	int list[MAX_SIZE];
-	srand(time(NULL));
-	for (i = 0; i < num; i++)
-		list[i] = rand() % 100;
+	double list[MAX_SIZE] = { 5.7, 3.2, 0.7, 9.5, 4.1 };
 
-	bubble_sort(list, num);
+	qsort((void*)list, (size_t)MAX_SIZE, sizeof(double), compare);
 
-	for (i = 0; i < num; i++)
-		printf("%d ", list[i]);
+	for (i = 0; i < 5; i++)
+		printf("%0.1f ", list[i]);
 	printf("\n");
-	return 0;
+	return 0; 
 }
