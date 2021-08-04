@@ -117,7 +117,13 @@
     <ClCompile Include="8_2 Tree Traversal.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="8_3 반복적 순회.c">
+    <ClCompile Include="8_3 반복적 중위 순회.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="8_4 반복적 전위 순회.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="8_5 반복적 후위 순회.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
