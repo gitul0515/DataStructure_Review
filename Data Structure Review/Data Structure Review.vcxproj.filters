@@ -126,6 +126,9 @@
     <ClCompile Include="8_5 반복적 후위 순회.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="8_4 Linked Queue.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore">
