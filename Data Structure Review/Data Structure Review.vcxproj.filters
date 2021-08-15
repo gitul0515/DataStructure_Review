@@ -132,6 +132,9 @@
     <ClCompile Include="8_6 레벨 순회.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="8_7 Binary Tree 추가 연산.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore">

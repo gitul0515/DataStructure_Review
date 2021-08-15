@@ -238,7 +238,10 @@
     <ClCompile Include="8_5 반복적 후위 순회.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="8_6 레벨 순회.c" />
+    <ClCompile Include="8_6 레벨 순회.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="8_7 Binary Tree 추가 연산.c" />
     <ClCompile Include="시간 관련 함수1.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>

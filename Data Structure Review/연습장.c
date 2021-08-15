@@ -1,86 +1,130 @@
-//연결리스트로 구현한 큐
+//레벨 순회 프로그램
 #include<stdio.h>
 #include<stdlib.h>
 #include<memory.h>
-typedef int element;
-typedef struct QueueNode{
-	element data;
-	struct QueueNode* link;
-}QueueNode;
-typedef struct {
-	QueueNode* front;
-	QueueNode* rear;
-}QueueListType;
+typedef struct TreeNode {
+	int data;
+	struct TreeNode* llink, * rlink;
+}TreeNode;
+//============= 원형큐 코드 시작 =============
+#define MAX_QUEUE_SIZE 10
+typedef TreeNode* element;
+typedef struct
+{
+	int front, rear;
+	element data[MAX_QUEUE_SIZE];
+}QueueType;
 
-//초기화 함수
-void init_queue(QueueListType* q)
+//큐 초기화 함수 
+void init_queue(QueueType* q)
 {
-	q->front = 0;
-	q->rear = 0;
+	q->front = q->rear = 0;
 }
-//공백 상태 검출 함수 
-int is_empty(QueueListType* q)
+//오류 처리 함수
+void queue_error(char* str)
 {
-	return q->front == NULL;
+	fprintf(stderr, "%s\n", str);
+	exit(1);
 }
-//포화 상태 검출 함수 
-int is_full(QueueListType* q)
+//공백 상태 검사 함수 
+int is_empty(QueueType* q)
 {
-	return 0;
+	return q->rear == q->front;
+}
+//포화 상태 검사 함수 
+int is_full(QueueType* q)
+{
+	return (q->rear + 1) % MAX_QUEUE_SIZE == q->front;
 }
 //삽입 함수 
-void enqueue(QueueListType* q, element item)
+void enqueue(QueueType* q, element item)
 {
-	QueueNode* temp = (QueueNode*)malloc(sizeof(QueueNode));
-	temp->data = item;
-	temp->link = NULL;
-	if (is_empty(q))     //공백일 경우
-	{
-		q->front = temp;
-		q->rear = temp;
-	}
-	else                 //공백이 아닐 경우
-	{
-		q->rear->link = temp;
-		q->rear = temp;
-	}
+	if (is_full(q))
+		queue_error("큐가 포화상태입니다.");
+	q->rear = (q->rear + 1) % MAX_QUEUE_SIZE;
+	q->data[q->rear] = item;
 }
 //삭제 함수 
-element dequeue(QueueListType* q)
+element dequeue(QueueType* q)
 {
 	if (is_empty(q))
-	{
-		fprintf(stderr, "큐가 공백상태입니다.\n");
-		exit(1);
-	}
-
-	QueueNode* rm = (QueueNode*)malloc(sizeof(QueueNode));
-	element data = rm->data;
-	q->front = q->front->link;
-	if (q->front == NULL)
-		q->rear = NULL;
-	free(rm);
-	return data;
+		queue_error("큐가 공백상태입니다.");
+	q->front = (q->front + 1) % MAX_QUEUE_SIZE;
+	return q->data[q->front];
 }
-//출력 함수 
-void print_queue(QueueListType* q)
+//피크 함수 
+element peek(QueueType* q)
 {
-	QueueNode* p;
-	for (p = q->front; p != NULL; p = p->link)
-		printf("%d->", p->data);
-	printf("NULL\n");
+	if (is_empty(q))
+		queue_error("큐가 공백상태입니다.");
+	return q->data[(q->front + 1) % MAX_QUEUE_SIZE];
 }
-
-int main() {
-	QueueListType queue;
-
+//큐 출력 함수 
+void queue_print(QueueType* q)
+{
+	printf("Queue(front = %d, rear = %d): ", q->front, q->rear);
+	if (!is_empty(q))
+	{
+		int i = q->front;
+		do
+		{
+			i = (i + 1) % MAX_QUEUE_SIZE;
+			printf("%d|", q->data[i]);
+			if (i == q->rear)
+				break;
+		} while (i != q->front);
+	}
+	printf("\n");
+}
+//============= 원형큐 코드 종료 =============
+//레벨 순회 함수
+void level_order(TreeNode* root)
+{
+	QueueType queue;
 	init_queue(&queue);
 
-	enqueue(&queue, 1); print_queue(&queue);
-	enqueue(&queue, 2); print_queue(&queue);
-	enqueue(&queue, 3); print_queue(&queue);
-	dequeue(&queue); print_queue(&queue);
-	dequeue(&queue); print_queue(&queue);
-	dequeue(&queue); print_queue(&queue);
-	return 0; 
+	if (root == NULL)
+		return;
+	enqueue(&queue, root);
+	while (!is_empty(&queue))
+	{
+		element p = dequeue(&queue);
+		printf("[%d] ", p->data);
+		if (p->llink)
+			enqueue(&queue, p->llink);
+		if (p->rlink)
+			enqueue(&queue, p->rlink);
+	}
+}
+
+int main()
+{
+	//동적 메모리를 할당
+	TreeNode* n1 = (TreeNode*)malloc(sizeof(TreeNode));
+	TreeNode* n2 = (TreeNode*)malloc(sizeof(TreeNode));
+	TreeNode* n3 = (TreeNode*)malloc(sizeof(TreeNode));
+	TreeNode* n4 = (TreeNode*)malloc(sizeof(TreeNode));
+	TreeNode* n5 = (TreeNode*)malloc(sizeof(TreeNode));
+	TreeNode* n6 = (TreeNode*)malloc(sizeof(TreeNode));
+
+	/*이진트리 생성
+			 15
+		  4 	 20
+		1    16     25
+	*/
+	n1->data = 1; n1->llink = NULL; n1->rlink = NULL;
+	n2->data = 4; n2->llink = n1; n2->rlink = NULL;
+	n3->data = 16; n3->llink = NULL; n3->rlink = NULL;
+	n4->data = 25; n4->llink = NULL; n4->rlink = NULL;
+	n5->data = 20; n5->llink = n3; n5->rlink = n4;
+	n6->data = 15; n6->llink = n2; n6->rlink = n5;
+	TreeNode* root = n6;
+
+	printf("레벨 순회: ");
+	level_order(root);
+	printf("\n");
+
+	free(n1); free(n2); free(n3);
+	free(n4); free(n5); free(n6);
+	return 0;
 }
